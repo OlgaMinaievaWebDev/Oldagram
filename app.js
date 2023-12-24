@@ -35,17 +35,19 @@ function renderPost() {
   for (let i = 0; i < posts.length; i++) {
     postFeed += `<div class='content' >
    <div class='section'>
-   <img id = 'avatar' src = ${posts[i].avatar} alt = 'avatar image'>
-   <div class='top-content'>
+   <div class = 'top-content'>
+   <img class = 'avatar' src = ${posts[i].avatar} alt = 'avatar image'>
+   <div class='names'>
    <h3>${posts[i].name}</h3>
    <p>${posts[i].location}</p>
-   </div></div>
+   </div>
+   </div>
    <img class = 'post' src = ${posts[i].post} alt = 'user post'>
    <div class ='bottom'>
    <div class = 'icons'>
-   <button class="btn"><img class="icon-img like-icon" src="images/icon-heart.png" alt="heart"></button>
-    <button class="btn"><img class="icon-img" src="images/icon-comment.png" alt="comment on post"></button> 
-    <button class="btn"><img class="icon-img" src="images/icon-dm.png" alt="dm the user"></button>    
+   <button class="btn"><img class="like" src="images/icon-heart.png" alt="heart"></button>
+    <button class="btn"><img class="comment" src="images/icon-comment.png" alt="comment on post"></button> 
+    <button class="btn"><img class="dm" src="images/icon-dm.png" alt="dm the user"></button>    
    </div>
     <p class="likes"><span id="num-likes${i}">${posts[i].likes}</span> likes</p>
      <div class="comments">
