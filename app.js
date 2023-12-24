@@ -30,6 +30,8 @@ const posts = [
 ];
 
 const mainEl = document.getElementById("main");
+const likeBtn = document.getElementsByClassName("likes");
+
 function renderPost() {
   let postFeed = "";
   for (let i = 0; i < posts.length; i++) {
@@ -45,11 +47,11 @@ function renderPost() {
    <img class = 'post' src = ${posts[i].post} alt = 'user post'>
    <div class ='bottom'>
    <div class = 'icons'>
-   <button class="btn"><img class="like" src="images/icon-heart.png" alt="heart"></button>
+   <button class="btn" id="like-btn${i}"><img class="like" src="images/icon-heart.png" alt="heart"></button>
     <button class="btn"><img class="comment" src="images/icon-comment.png" alt="comment on post"></button> 
     <button class="btn"><img class="dm" src="images/icon-dm.png" alt="dm the user"></button>    
    </div>
-    <p class="likes"><span id="num-likes${i}">${posts[i].likes}</span> likes</p>
+    <p class="likes"><span class="likes-count" id="num-likes${i}">${posts[i].likes}</span> likes</p>
      <div class="comments">
      <p id="comment"></p>
      <span id="username">${posts[i].username}</span> ${posts[i].comment}</p>
@@ -62,3 +64,25 @@ function renderPost() {
 }
 
 renderPost();
+
+for (let i = 0; i < posts.length; i++) {
+  let isLiked = true;
+  document
+    .getElementById("like-btn" + i)
+    .addEventListener("click", function () {
+      if (isLiked) {
+        posts[i].likes++;
+        console.log(posts[i].likes);
+        console.log(isLiked);
+        document.getElementById("num-likes" + i).textContent = posts[i].likes;
+        document.getElementById("like-btn" + i).classList.toggle("liked");
+      } else {
+        posts[i].likes--;
+        console.log(posts[i].likes);
+        console.log(isLiked);
+        document.getElementById("num-likes" + i).textContent = posts[i].likes;
+        document.getElementById("like-btn" + i).classList.toggle("liked");
+      }
+      isLiked = !isLiked;
+    });
+}
